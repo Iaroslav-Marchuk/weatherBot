@@ -1,0 +1,37 @@
+{
+  "name": "weatherbot",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "eslint src/**/*.js",
+    "start": "node ./src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Iaroslav-Marchuk/weatherBot.git"
+  },
+  "keywords": [],
+  "author": "Iaroslav_Marchuk <jarik.13a@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Iaroslav-Marchuk/weatherBot/issues"
+  },
+  "homepage": "https://github.com/Iaroslav-Marchuk/weatherBot#readme",
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "eslint": "^10.2.1",
+    "globals": "^17.5.0",
+    "nodemon": "^3.1.14"
+  },
+  "dependencies": {
+    "@telegraf/session": "^2.0.0-beta.7",
+    "axios": "^1.15.2",
+    "dotenv": "^17.4.2",
+    "mongoose": "^9.6.1",
+    "node-cron": "^4.2.1",
+    "telegraf": "^4.16.3"
+  }
+}

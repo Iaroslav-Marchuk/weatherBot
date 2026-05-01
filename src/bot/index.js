@@ -4,6 +4,7 @@ import { getEnvVariable } from '../utils/getEnvVariable.js';
 import { weatherCommand } from './commands/weather.js';
 import { forecastCommand } from './commands/forecast.js';
 import { subscribeScene } from './scenes/subscribeScene.js';
+import { startNotificationCron } from './cron/notifySubscribes.js';
 
 const bot = new Telegraf(getEnvVariable('BOT_TOKEN'));
 
@@ -15,6 +16,7 @@ bot.command('start', (ctx) => ctx.scene.enter('subscribe'));
 
 weatherCommand(bot);
 forecastCommand(bot);
+startNotificationCron(bot);
 
 export const startBot = async () => {
   await bot.telegram.setMyCommands([
@@ -24,7 +26,7 @@ export const startBot = async () => {
   ]);
 
   bot.launch();
-  console.log('Бот запущено 🤖');
+  console.log('Bot is started 🤖');
 
   process.once('SIGINT', () => bot.stop('SIGINT'));
   process.once('SIGTERM', () => bot.stop('SIGTERM'));

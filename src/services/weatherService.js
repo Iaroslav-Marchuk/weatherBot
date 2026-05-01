@@ -1,5 +1,27 @@
 import axios from 'axios';
 import { getEnvVariable } from '../utils/getEnvVariable.js';
+import { find } from 'geo-tz';
+
+export async function getCityData(city) {
+  const { data } = await axios.get(
+    'https://api.openweathermap.org/data/2.5/weather',
+    {
+      params: {
+        q: city,
+        appid: getEnvVariable('WEATHER_API_KEY'),
+        units: 'metric',
+        lang: 'ua',
+      },
+    },
+  );
+
+  const timezone = find(data.coord.lat, data.coord.lon)[0];
+
+  return {
+    name: data.name,
+    timezone,
+  };
+}
 
 export async function getWeather(city) {
   const { data } = await axios.get(

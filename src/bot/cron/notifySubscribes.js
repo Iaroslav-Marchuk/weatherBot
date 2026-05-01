@@ -15,13 +15,6 @@ export const startNotificationCron = (bot) => {
         hour12: false,
       });
 
-      console.log({
-        localTime,
-        notifyAt: subscriber.notifyAt,
-        timezone: subscriber.timezone,
-        match: localTime === subscriber.notifyAt,
-      });
-
       if (localTime === subscriber.notifyAt) {
         try {
           const message = await getForecast(subscriber.city);

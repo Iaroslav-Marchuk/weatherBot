@@ -1,6 +1,6 @@
 import { Scenes } from 'telegraf';
 
-import { Subscriber } from '../../db/models/subscriberModel.js';
+import { SubscriberCollection } from '../../db/models/subscriberModel.js';
 
 export const subscribeScene = new Scenes.WizardScene(
   'subscribe',
@@ -28,7 +28,7 @@ export const subscribeScene = new Scenes.WizardScene(
     const { city } = ctx.wizard.state;
     const chatId = ctx.chat.id;
 
-    await Subscriber.findOneAndUpdate(
+    await SubscriberCollection.findOneAndUpdate(
       { chatId },
       { chatId, city, notifyAt },
       { upsert: true },
